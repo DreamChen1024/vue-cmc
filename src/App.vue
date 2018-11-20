@@ -21,8 +21,12 @@
 				<span class="mui-tab-label">搜索</span>
 			</router-link>
 		</nav>
+
     <!-- 中间内容区域 -->
-    <router-view></router-view>
+    <transition>
+      <router-view></router-view>
+    </transition>
+    
   </div>
 </template>
 
@@ -40,5 +44,21 @@ export default {
     padding-top: 40px;
     padding-bottom: 50px;
     background-color: #fff;
+    overflow-x: hidden; // 避免动画进行时 出现滚动条
+  }
+
+  .v-enter {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  .v-leave-to {
+    transform: translateX(-100%);
+    opacity: 0;
+    position: absolute;
+  }
+
+  .v-enter-active,
+  .v-leave-active {
+    transition: all 0.5s ease;
   }
 </style>
