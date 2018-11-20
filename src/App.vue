@@ -1,7 +1,7 @@
 <template>
   <div class="app-container">
     <!-- 头部区域 -->
-    <mt-header fixed title="固定在顶部"></mt-header>
+    <mt-header fixed title="Vue-cmc"></mt-header>
     <!-- 底部区域 -->
     <nav class="mui-bar mui-bar-tab">
 			<router-link class="mui-tab-item" to="/home">
@@ -39,5 +39,6 @@ export default {
   .app-container {
     padding-top: 40px;
     padding-bottom: 50px;
+    background-color: #fff;
   }
 </style>

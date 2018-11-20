@@ -14,6 +14,10 @@ Vue.config.productionTip = false
 import { Header, Swipe, SwipeItem } from 'mint-ui'
 //引入mint-ui的样式(疑似样式包有问题)
 import 'mint-ui/lib/style.css'
+
+//导入公共样式
+import './css/common.less'
+
 // 注册组件
 Vue.component(Header.name, Header)
 Vue.component(Swipe.name, Swipe)
