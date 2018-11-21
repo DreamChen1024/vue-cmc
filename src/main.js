@@ -2,6 +2,8 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router/'
+//导入moment 时间处理
+import moment  from 'moment'
 
 //导入vue-resource 与后台交互
 import VueResource from 'vue-resource'
@@ -20,6 +22,12 @@ import 'mint-ui/lib/style.css'
 //导入公共样式
 import './css/common.less'
 
+//定义全局过滤器
+Vue.filter('dateFormat', function(dateStr, pattern = 'YYYY-MM-DD HH:mm:ss') {
+  //直接调用表示获取当前时间
+  return moment(dateStr).format(pattern)
+})
+
 // 注册组件
 Vue.component(Header.name, Header)
 Vue.component(Swipe.name, Swipe)
@@ -28,6 +36,8 @@ Vue.component(SwipeItem.name, SwipeItem)
 //导入mui的样式
 import './lib/mui/css/mui.css'
 import './lib/mui/css/icons-extra.css'
+
+
 
 new Vue({
   el: '#app',
