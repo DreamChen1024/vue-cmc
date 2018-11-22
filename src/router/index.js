@@ -5,7 +5,9 @@ import homeComponent from '../pages/home/'
 import meberComponent from '../pages/member/'
 import shopcarComponent from '../pages/shopcar/'
 import searchComponent from '../pages/search/'
-import newsList from '../pages/newsList/'
+import newsListComponent from '../pages/newsList/'
+import newsInfoComponent from '../pages/newsInfo/'
+
 
 Vue.use(Router)
 
@@ -16,7 +18,8 @@ export default new Router({
     { path: '/member', component: meberComponent},
     { path: '/shopcar', component: shopcarComponent},
     { path: '/search', component: searchComponent},
-    { path: '/home/newsList', component:newsList}
+    { path: '/home/newsList', component: newsListComponent},
+    { path: '/home/newsInfo/:id', component: newsInfoComponent}
   ],
   linkActiveClass: 'mui-active'
 })
