@@ -5,6 +5,10 @@ import router from './router/'
 //导入moment 时间处理
 import moment  from 'moment'
 
+//导入缩略图插件
+import VuePreview from 'vue2-preview'
+Vue.use(VuePreview) 
+
 //导入vue-resource 与后台交互
 import VueResource from 'vue-resource'
 // 注册

@@ -39,7 +39,7 @@ export default {
         getComments() {
             this.$http.get("api/getcomments/" + this.id + "?pageindex=" + this.pageIndex)
             .then(result => {
-                console.log(result)
+                // console.log(result)
                 if(result.body.status === 0) {
                     this.commentList = this.commentList.concat(result.body.message)
                 } else {
