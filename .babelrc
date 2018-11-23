@@ -8,16 +8,20 @@
     }],
     "stage-2"
   ],
-  "plugins": ["transform-vue-jsx", "transform-runtime"],
+  "plugins": ["transform-vue-jsx", "transform-runtime",
+    ["component", [
+      {
+        "libraryName": "mint-ui",
+        "style": true
+      }
+  ]]],
+  "ignore": [
+    "./src/lib/mui/js/*.js"
+  ],
   "env": {
     "test": {
       "presets": ["env", "stage-2"],
-      "plugins": ["transform-vue-jsx", "transform-es2015-modules-commonjs", "dynamic-import-node",["component", [
-        {
-          "libraryName": "mint-ui",
-          "style": true
-        }
-      ]]]
+      "plugins": ["transform-vue-jsx", "transform-es2015-modules-commonjs", "dynamic-import-node"]
     }
   }
 }

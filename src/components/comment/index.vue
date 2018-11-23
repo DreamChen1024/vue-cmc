@@ -39,7 +39,7 @@ export default {
         getComments() {
             this.$http.get("api/getcomments/" + this.id + "?pageindex=" + this.pageIndex)
             .then(result => {
-                // console.log(result)
+                console.log(result)
                 if(result.body.status === 0) {
                     this.commentList = this.commentList.concat(result.body.message)
                 } else {
@@ -58,7 +58,7 @@ export default {
                 return Toast('评论的内容不能为空!')
             } else {
                 this.$http.post('api/postcomment/' + this.id, { content: this.msg.trim()}).then(result => {
-                    console.log(result)
+                    // console.log(result)
                     if(result.body.status === 0) {
                         this.pageIndex = 1
                         this.commentList = []

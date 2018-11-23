@@ -59,5 +59,10 @@ export default {
             color: #26a2ff;
             padding: 0 5px;
         }
+        .content {
+            img {
+                width: 100%;
+            }
+        }
     }
 </style>
