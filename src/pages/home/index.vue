@@ -1,14 +1,15 @@
 <template>
     <div class="home-container">
         <!-- 轮播图 -->
-        <mt-swipe class="banner-contarner" :auto="4000">
+        <!-- <mt-swipe class="banner-contarner" :auto="4000">
             <mt-swipe-item v-for="(item, index) in bannerList" :key="index">
                 <a :href="item.url">
                     <img :src="item.img" alt="">
                 </a>
             </mt-swipe-item>
-            
-        </mt-swipe>
+        </mt-swipe> -->
+
+        <swiper :bannerList="bannerList"></swiper>
         <!-- 六宫格 -->
         <ul class="mui-table-view mui-grid-view mui-grid-9">
             <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
@@ -24,10 +25,10 @@
                 </router-link>
             </li>
             <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-                <a href="#">
+                <router-link to="/home/goodsList">
                     <img src="../../images/menu3.png" alt="">
                     <div class="mui-media-body">商品购买</div>
-                </a>
+                </router-link>
             </li>
             <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
                 <a href="#">
@@ -54,6 +55,8 @@
 
 <script>
 import { Toast } from "mint-ui";
+//导入轮播图组件
+import swiper from '../../components/swiper/'
 
 export default {
   data() {
@@ -74,24 +77,27 @@ export default {
         }
       });
     }
+  },
+  components: {
+      swiper
   }
 };
 </script>
 
 <style lang="less">
 .home-container {
-  .banner-contarner {
-    width: 100%;
-    height: 200px;
-    a {
-      display: block;
-      width: 100%;
-      height: 100%;
-      img {
-        width: 100%;
-      }
-    }
-  }
+//   .banner-contarner {
+//     width: 100%;
+//     height: 200px;
+//     a {
+//       display: block;
+//       width: 100%;
+//       height: 100%;
+//       img {
+//         width: 100%;
+//       }
+//     }
+//   }
   .mui-grid-view {
       background-color: #fff;
       border: none;
