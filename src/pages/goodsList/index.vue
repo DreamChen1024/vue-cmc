@@ -1,6 +1,6 @@
 <template>
     <div class="goodsList-container">
-        <div class="good-item" v-for="(item) in goodsList" :key="item.id">
+        <div class="good-item" v-for="(item,index) in goodsList" :key="index" @click="goodsInfo(item.id)">
             <img :src=" item.img_url " alt="">
             <h1 class="title">{{item.title}}</h1>
             <div class="info">
@@ -14,6 +14,8 @@
                 </p>
             </div>
         </div>
+
+        <mt-button type="danger" size="large" @click="getMore">加载更多</mt-button>
     </div>
 </template>
 
@@ -31,15 +33,26 @@ export default {
         this.getGoodsList()
     },
     methods: {
+        // 获取商品列表
         getGoodsList() {
             this.$http.get('api/getgoods?pageindex=' + this.pageindex).then(result => {
-                console.log(result)
+                // console.log(result)
                 if(result.body.status === 0) {
-                    this.goodsList = result.body.message
+                    this.goodsList = this.goodsList.concat(result.body.message)
                 } else {
                     Toast('获取商品详情失败,请重试!')
                 }
             })
+        },
+        //加载更多
+        getMore() {
+            this.pageindex = 1
+            this.getGoodsList()
+        },
+        goodsInfo(id) {
+            // console.log(this);
+            this.$router.push({name: 'goodsInfo', params: { id } })
+            
         }
     }
 }

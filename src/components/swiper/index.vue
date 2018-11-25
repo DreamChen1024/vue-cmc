@@ -3,7 +3,7 @@
         <mt-swipe class="banner-contarner" :auto="4000">
             <mt-swipe-item v-for="(item, index) in bannerList" :key="index">
                 <a :href="item.url">
-                    <img :src="item.img" alt="">
+                    <img :src="item.img" alt="" :class="{'full': isfull}">
                 </a>
             </mt-swipe-item>
         </mt-swipe>
@@ -12,7 +12,7 @@
 
 <script>
 export default {
-    props: ['bannerList']
+    props: ['bannerList','isfull']
 }
 </script>
 
@@ -24,7 +24,7 @@ export default {
         display: block;
         width: 100%;
         height: 100%;
-        img {
+        img.full {
             width: 100%;
         }
         }

@@ -42,7 +42,7 @@ export default {
         //获取缩略图
         getThumImages() {
             this.$http.get('api/getthumimages/' + this.id).then(result => {
-                console.log(result)
+                // console.log(result)
                 if(result.body.status === 0) {
                     result.body.message.forEach(item => {
                         item.w = 600

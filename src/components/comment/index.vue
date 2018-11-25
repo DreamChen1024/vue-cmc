@@ -1,6 +1,6 @@
 <template>
     <div class="comment-container">
-        <h2>发表评论</h2>
+        <h3>发表评论</h3>
         <hr>
         <textarea placeholder="请输入您要评论的内容,最多输入120字!" maxlength="120" v-model="msg"></textarea>
         <mt-button type="primary" size="large" @click="postComment">发表评论</mt-button>
@@ -76,6 +76,10 @@ export default {
 <style lang="less">
 
     .comment-container {
+        h3 {
+            font-size: 18px;
+            font-weight: bold;
+        }
         textarea {
             font-size: 14px;
             height: 85px;
