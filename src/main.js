@@ -5,6 +5,9 @@ import router from './router/'
 //导入moment 时间处理
 import moment  from 'moment'
 
+// 导入 store 
+import store from './store/'
+
 //导入缩略图插件
 import VuePreview from 'vue2-preview'
 Vue.use(VuePreview) 
@@ -49,5 +52,6 @@ import './lib/mui/css/icons-extra.css'
 new Vue({
   el: '#app',
   router,
-  render: h => h(App)
+  render: h => h(App),
+  store // 把store 状态管理对象挂载到 实例上
 })

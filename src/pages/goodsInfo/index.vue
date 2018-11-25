@@ -114,6 +114,15 @@ export default {
     addToShopCar() {
       // 添加到购物车
       this.ballFlag = !this.ballFlag;
+
+      // 拼接出一个,要保存到store 中的 car 数组里的商品 信息对象
+      let carInfo = {
+        id: this.id,
+        count: this.buyNum,
+        selected: true
+      }
+      // 调用 store 中的 mutations 来讲商品加入购物车
+      this.$store.commit("addToCar", carInfo)
     },
     // 图文介绍
     goDesc(id) {
@@ -138,6 +147,7 @@ export default {
 
       //获取小球在页面中的位置
       const ballPosition = this.$refs.ball.getBoundingClientRect();
+      console.log(this.$refs.ball)
       //获取徽标在页面中的位置,这里需要操作dom
       const badgePosition = document
         .getElementById("badge")
@@ -147,7 +157,7 @@ export default {
       const yDist = badgePosition.top - ballPosition.top;
 
       el.style.transform = `translate(${xDist}px, ${yDist}px)`;
-      el.style.transition = "all 0.5s cubic-bezier(.4,-0.3,1,.68)";
+      el.style.transition = "all 0.4s cubic-bezier(.4,-0.3,1,.68)";
 
       done();
     },
