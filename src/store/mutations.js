@@ -39,6 +39,24 @@ const mutations = { // this.$store.commit('方法的名称', '传递唯一的参
             }
         })
         localStorage.setItem('car', JSON.stringify(state.car))
+    },
+    removeForCar(state, id) {
+        //根据id, 从state 中的购物车中删除对应的那条商品数据
+        state.car.some((item, i) => {
+            if(item.id == id) {
+                state.car.splice(i, 1)
+                return true;
+            }
+        })
+        // 将删除完毕后的,最新的购物车数据,同步到本地存储中
+        localStorage.setItem('car', JSON.stringify(state.car))
+    },
+    updateGoodsSelected(state, info) {
+        state.car.some(item => {
+            if(item.id == info.id) {
+                item.selected = info.selected
+            }
+        })
     }
 
 }

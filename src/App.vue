@@ -1,7 +1,11 @@
 <template>
   <div class="app-container">
     <!-- 头部区域 -->
-    <mt-header fixed title="Vue-cmc"></mt-header>
+    <mt-header fixed title="Vue-cmc">
+      <span slot="left" @click="goBack" v-show="flag">
+        <mt-button icon="back">返回</mt-button>
+      </span>
+    </mt-header>
     <!-- 底部区域 -->
     <nav class="mui-bar mui-bar-tab">
 			<router-link class="my-mui-tab-item" to="/home">
@@ -34,7 +38,28 @@
 
 export default {
   name: 'App',
-  components: {
+  data() {
+    return {
+      flag: false
+    }
+  },
+  created() {
+    this.flag = this.$route.path === "/home" ? false : true;
+  },
+  methods: {
+    goBack() {
+      // 点击后退
+      this.$router.go(-1)
+    }
+  },
+  watch: {
+    "$route.path": function(newVal) {
+      if(newVal === "/home") {
+        this.flag = false
+      } else {
+        this.flag = true
+      }
+    }
   }
 }
 </script>
