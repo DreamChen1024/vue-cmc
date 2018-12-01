@@ -8,12 +8,13 @@ const mutations = { // this.$store.commit('方法的名称', '传递唯一的参
         let flag = false
 
         state.car.some(item => {
-            if (item.id == carInfo.id) {
+            if (item.id == carInfo.id && item.count < carInfo.stock) {
                 item.count += parseInt(carInfo.count)
                 flag = true
                 return true
             }
         })
+
 
         //如果最终，循环完毕，得到的 flag 还是 false， 则把商品数据直接 push 到购物车中
         if(!flag) {
@@ -21,6 +22,22 @@ const mutations = { // this.$store.commit('方法的名称', '传递唯一的参
         }
 
         // 当更新car 之后， 把car 数组， 存储到本地的 localStorage 中
+        localStorage.setItem('car', JSON.stringify(state.car))
+    },
+    buyAdd(state, id) {
+        state.car.some(item => {
+            if(item.id == id && item.count < item.stock) {
+                item.count++ 
+            }
+        })
+        localStorage.setItem('car', JSON.stringify(state.car))
+    },
+    buySub(state, id) {
+        state.car.some(item => {
+            if(item.id == id && item.count > 1) {
+                item.count-- 
+            }
+        })
         localStorage.setItem('car', JSON.stringify(state.car))
     }
 

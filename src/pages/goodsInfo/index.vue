@@ -119,7 +119,9 @@ export default {
       let carInfo = {
         id: this.id,
         count: this.buyNum,
-        selected: true
+        selected: true,
+        stock: this.goodsInfo.stock_quantity,
+        price: this.goodsInfo.sell_price
       }
       // 调用 store 中的 mutations 来讲商品加入购物车
       this.$store.commit("addToCar", carInfo)
